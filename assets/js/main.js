@@ -94,7 +94,6 @@ let app = new Vue({
     inputMessage: "",
     inputSearch: "",
     hiddenClass: false,
-    darkMode: false,
     introImg: "assets/img/intro.jpg",
     newChatPopup: false,
     newContactName: "",
