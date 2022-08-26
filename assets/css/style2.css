@@ -1,0 +1,226 @@
+/* Io ve lo dico qui: inizialmente avevo creato questo documento perché ero convinto per qualche motivo che fra i bonus ci fosse anche di mettere dark/light mode,
+quindi questa doveva essere la light e poi facevo un altro style con la dark. Non c'era tra i bonus, quindi ho fatto sta cagata senza motivo, e non ho intenzione,
+ASSOLUTAMENTE, di rimettere tutto nell'altro style e cancellare questo. NON CHIEDETEMELO, NON LO FARO', MAIIIIIIIIIIIII*/
+
+/* Dichiarazioni generali */
+
+body {
+  color: #525252;
+}
+
+/* Caricamento App */
+
+.app-loading {
+  background: #fff;
+}
+
+/* Menù opzioni */
+
+.options {
+  background: #fff;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+.options > a {
+  color: #666666;
+}
+
+.options > a:hover {
+  background: #f5f5f5;
+}
+
+/* Dichiarazioni comuni in entrambi i lati */
+
+/* Barra superiore */
+
+.top-bar {
+  background: #ededed;
+  color: #5a6165;
+}
+
+/* Barra superiore sx */
+
+/* Aggiung contatto */
+
+.new-chat {
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.new-chat > div {
+  background: #ededed;
+  border: 1px solid #dadada;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+}
+
+.new-chat > div > .fa-times:hover {
+  color: #000;
+}
+
+.new-chat > div > input {
+  background: #fff;
+  color: #000;
+}
+
+.new-chat > div > input::placeholder {
+  color: #999999;
+}
+
+.new-chat > div > input[type="button"] {
+  background: #dadada;
+}
+
+.new-chat > div > input[type="button"]:hover {
+  background: #ffffff;
+}
+
+/* Barra di ricerca */
+
+aside > .search-bar {
+  background: #f6f6f6;
+  border-bottom: 1px solid #ebebeb;
+}
+
+aside > .search-bar > input {
+  background: #fff url("../img/search.svg") no-repeat 15px;
+  background-size: 17px;
+  color: #000;
+}
+
+aside > .search-bar > input::placeholder {
+  color: #999999;
+}
+
+/* Lista contatti */
+
+aside > .contact-list {
+  background: #fff;
+}
+
+/* Singolo contatto */
+
+aside > .contact-list > .contact {
+  border-bottom: 1px solid #f2f2f2;
+}
+
+aside > .contact-list > .contact:hover,
+aside > .contact-list > .contact.active {
+  background: #ebebeb;
+  color: #000;
+}
+
+aside > .contact-list > .contact > .info > .name {
+  color: #000;
+}
+
+aside > .contact-list > .contact > .info > .last-mess {
+  color: #838383;
+}
+
+aside > .contact-list > .contact:hover > .info > .last-mess {
+  color: #000;
+}
+
+aside > .contact-list > .contact > .date {
+  color: #838383;
+}
+
+/* Lato destro */
+
+main {
+  border-left: 1px solid #dadada;
+}
+
+/* Messaggio di benvenuto */
+main > .welcome {
+  background: #f8f9fa;
+  border-bottom: 10px solid #4adf83;
+}
+
+main > .welcome > div {
+  color: #888989;
+}
+
+main > .welcome > .title {
+  color: #525252;
+}
+
+/* Barra superiore dx  */
+
+main .top-bar {
+  border-bottom: 1px solid #dadada;
+}
+
+main .top-bar .name {
+  color: #000;
+}
+
+main .top-bar .status {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+main .top-bar > div:nth-child(2) i:nth-child(2) {
+  border-right: 1px solid #9fa3a5;
+}
+
+/* Chat */
+
+main .chat {
+  background: #fff url("../img/chat-background.png") repeat;
+}
+
+main .chat > .message {
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
+}
+
+main .chat > .sent {
+  background: #dcf8c6;
+}
+
+main .chat > .sent::after {
+  border-left: 10px solid #dcf8c6;
+  border-bottom: 10px solid transparent;
+}
+
+main .chat > .received {
+  background: #fff;
+}
+
+main .chat > .received::before {
+  border-right: 10px solid #fff;
+  border-bottom: 10px solid transparent;
+}
+
+main .chat > .message > .text {
+  color: #000;
+}
+
+main .chat > .message > .date {
+  color: #505050;
+}
+
+/* Opzioni messaggio */
+
+main .chat > .message.sent > .fa-angle-down {
+  color: #a7bc96;
+  text-shadow: 0 0 15px #dcf8c6, 0 0 10px #dcf8c6, 0 0 5px #dcf8c6;
+}
+
+main .chat > .message.received > .fa-angle-down {
+  color: #bfbfbf;
+  text-shadow: 0 0 15px #fff, 0 0 10px #fff, 0 0 5px #fff;
+}
+
+/* Barra invio messaggi */
+
+main .message-bar {
+  background: #f0f0f0;
+}
+
+main .message-bar > input {
+  background: #fff;
+  color: #000;
+}
+
+main .message-bar > input::placeholder {
+  color: #999999;
+}

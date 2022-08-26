@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Boolzapp</title>
+    <link rel="icon" href="/assets/img/favicon.svg">
+    <script src="https://kit.fontawesome.com/2bc32b9686.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="assets/css/style2.css" id="tema" />
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.8/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <div class="app-loading" v-if="appLoading">
+        <i class="fas fa-circle-notch"></i>
+        Caricamento... Attendi.
+      </div>
+      <div class="ui">
+        <aside>
+          <div class="top-bar">
+            <div>
+              <img src="assets/img/user-avatar.jpg" alt="" class="avatar"/>
+              <span style="font-size: 18px; color: black; margin-left: -10px;">Filippo Urriani</span>
+            </div>
+            <div>
+              <i class="fas fa-plus" @click="newChatPopup = true"></i>
+              <div class="new-chat" v-if="newChatPopup == true">
+                <div>
+                  <i class="fas fa-times" @click="newChatPopup = false"></i>
+                  <span>Nuova Chat</span>
+                  <input type="text" placeholder="Inserisci il nome del nuovo contatto" v-model="newContactName">
+                  <input type="text" placeholder="Inserisci il link dell'immagine di profilo" v-model="newContactAvatar">
+                  <input type="button" value="Crea" @click="newChat()">
+                </div>
+              </div>
+              <i class="fas fa-ellipsis-h"></i>
+            </div>
+          </div>
+          <div class="search-bar">
+            <input
+              type="text"
+              placeholder="Cerca o inizia una nuova chat"
+              v-model="inputSearch"
+            />
+          </div>
+          <div class="contact-list">
+            <div
+              class="contact"
+              :class="{active: focus == index}"
+              v-for="(contact, index) in contacts"
+              @click="changeChat(index)"
+              v-if="contact.name.toLowerCase().includes(inputSearch.toLowerCase())"
+            >
+              <div class="avatar">
+                <img :src="contact.avatar" alt="" />
+              </div>
+              <div class="info">
+                <div class="name">{{contact.name}}</div>
+                <div class="last-mess" v-if="contact.messages.length > 0">
+                  {{contact.messages.at(-1).text}}
+                </div>
+              </div>
+              <div class="date" v-if="contact.messages.length > 0">
+                {{contact.messages.at(-1).date}}
+              </div>
+            </div>
+          </div>
+        </aside>
+        <main>
+          <div class="welcome" v-if="focus < 0">
+            <img :src="introImg" alt="">
+            <div class="title">Mantieni il telefono connesso</div>
+            <div>BoolzApp si collega al tuo telefono per sincronizzare i messaggi. Per ridurre l'utilizzo dei dati, collega il telefono al Wi-Fi.</div>
+          </div>
+          <div v-else>
+            <div class="top-bar">
+              <div>
+                <img :src="contacts[focus].avatar" alt="" class="avatar" />
+                <div>
+                  <span class="name">{{contacts[focus].name}}</span>
+                  <span class="status">{{contacts[focus].status}}<span>
+                </div>
+              </div>
+              <div>
+                <i class="fas fa-video"></i>
+                <i class="fas fa-phone-alt"></i>
+                <i class="fas fa-search"></i>
+                <i class="fas fa-ellipsis-h" @click="contacts[focus].options = !contacts[focus].options"></i>
+                <div class="options" v-if="contacts[focus].options" @mouseleave="contacts[focus].options = false">
+                  <a href="#" @click="deleteAll(), contacts[focus].options = false">Elimina messaggi</a>
+                  <a href="#" @click="deleteChat(focus), contacts[focus].options = false">Elimina chat</a>
+                </div>
+              </div>
+            </div>
+            <div class="chat" id="chat">
+              <div
+                class="message"
+                :class="message.status"
+                v-for="(message, index) in contacts[focus].messages"
+              >
+                <span class="text">{{message.text}}</span>
+                <span class="date">{{message.date}}</span>
+                <i
+                  class="fas fa-angle-down"
+                  @click="message.openMessageOption = !message.openMessageOption"
+                ></i>
+                <div class="options" v-if="message.openMessageOption" @mouseleave="message.openMessageOption = false">
+                  <a href="#">Info messaggio</a>
+                  <a href="#" @click="deleteMessage(index), message.openMessageOption = false">Cancella messaggio</a>
+                </div>
+              </div>
+            </div>
+            <div class="message-bar">
+              <i class="far fa-smile"></i>
+              <i class="fas fa-paperclip"></i>
+              <input
+                type="text"
+                placeholder="Scrivi un messaggio"
+                v-model="inputMessage"
+                @keyup.enter="sendMessage(focus)"
+              />
+              <i
+                class="fas fa-microphone"
+                style="margin-left: 8px"
+                v-if="inputMessage == ''"
+              ></i>
+              <i class="fas fa-paper-plane" @click="sendMessage(focus)" v-else></i>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>
