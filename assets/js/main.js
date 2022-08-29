@@ -105,6 +105,9 @@ let app = new Vue({
       "Io pedalo le distanze ovest tanto che Ignazio veglia l'equipaggio uguale.",
       "Il diritto è l'album marcio delle etiche inseparabili e soltanto il tempo può darci ragione.",
       "Noi privatizziamo la sede illusoria intanto che tu inondi gli isolamenti gravidi.",
+      "Un combattimento disarmante, a tratti patetico, di cui non consiglierei la lettura a nessuno.",
+      "Voleva soltanto iscriversi alla Gakuen.",
+      "MADRE DI DIO, MA NON SAPEVO AVESSERE ISTITUITO IL MINISTERO DELLA SERIETA' E CHE DOVESSI FARE DOMANDA PER FARE UNA BATTUTA",
     ],
   },
   methods: {
